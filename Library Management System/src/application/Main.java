@@ -1,17 +1,29 @@
 package application;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import entities.Member;
+
+
+
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome!");
+        //testing the connection with the database
+        //replace the date again
+        Member m1;
+        m1 = new Member("vini", "rua 4 paralela", "82984372394", "vini@gmail.com");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Library");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(m1);
+
+        em.getTransaction().commit();
+
+        System.out.println("Ok!");
+
         }
     }
-}

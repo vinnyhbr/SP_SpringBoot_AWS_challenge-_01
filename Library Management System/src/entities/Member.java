@@ -1,29 +1,24 @@
 package entities;
 
 import javax.persistence.Entity;
-import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+
+
 @Entity
-public class Member {
-    private String name;
+public class Member extends Person {
+
     private String address;
-    private String numberphone;
+    private String numberPhone;
     private String email;
-    private Date associateDate;
+    private LocalDate associateDate;
 
-    public Member(String name, String address, String numberphone, String email, Date associateDate) {
-        this.name = name;
+    public Member(String name, String address, String numberPhone, String email) {
+        super(name);
         this.address = address;
-        this.numberphone = numberphone;
+        this.numberPhone = numberPhone;
         this.email = email;
-        this.associateDate = associateDate;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+       // this.associateDate = associateDate;
     }
 
     public String getAddress() {
@@ -34,12 +29,12 @@ public class Member {
         this.address = address;
     }
 
-    public String getNumberphone() {
-        return numberphone;
+    public String getNumberPhone() {
+        return numberPhone;
     }
 
-    public void setNumberphone(String numberphone) {
-        this.numberphone = numberphone;
+    public void setNumberPhone(String numberPhone) {
+        this.numberPhone = numberPhone;
     }
 
     public String getEmail() {
@@ -50,22 +45,23 @@ public class Member {
         this.email = email;
     }
 
-    public Date getAssociateDate() {
+    public LocalDate getAssociateDate() {
         return associateDate;
     }
 
-    public void setAssociateDate(Date associateDate) {
+    public void setAssociateDate(LocalDate associateDate) {
         this.associateDate = associateDate;
     }
 
     @Override
     public String toString() {
+        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
         return "Member{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", numberphone='" + numberphone + '\'' +
-                ", email='" + email + '\'' +
-                ", associateDate=" + associateDate +
+                "Name='" + getName() + '\'' +
+                "Address='" + address + '\'' +
+                ", Number phone='" + numberPhone + '\'' +
+                ", Email='" + email + '\'' +
+              //  ", Associate date=" + fmt.format(associateDate) +
                 '}';
     }
 }
