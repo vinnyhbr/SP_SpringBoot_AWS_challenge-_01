@@ -1,5 +1,5 @@
 # SP_SpringBoot_AWS_challenge-_01 🚀♨️
-## Discription 🗒️
+## Description 🗒️
 
 This project is a challenge proposed by scholarship program Compass UOL.
 
