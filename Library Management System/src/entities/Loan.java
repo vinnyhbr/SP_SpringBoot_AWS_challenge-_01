@@ -1,18 +1,30 @@
 package entities;
-import entities.enums.loanStatus;
+import entities.enums.LoanStatus;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
+@Entity
+@Table (name = "loans")
 public class Loan {
-    private Books books;
+
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book books;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
     private Member member;
-    private Date loanDate;
-    private Date returnDate;
-    private loanStatus loanStatus;
+    @Column
+    private LocalDate loanDate;
+    private LocalDate returnDate;
+    @Enumerated(EnumType.STRING)
+    private LoanStatus loanStatus;
+    @Column
     private BigDecimal fine;
 
-    public Loan(Books books, Member member, Date loanDate, Date returnDate, entities.enums.loanStatus loanStatus, BigDecimal fine) {
+    public Loan(Book books, Member member, LocalDate loanDate, LocalDate returnDate, entities.enums.LoanStatus loanStatus, BigDecimal fine) {
+
         this.books = books;
         this.member = member;
         this.loanDate = loanDate;
@@ -21,12 +33,12 @@ public class Loan {
         this.fine = fine;
     }
 
-    public Books getBooks() {
+    public Book getBook() {
 
         return books;
     }
 
-    public void setBooks(Books books) {
+    public void setBook(Book books) {
         this.books = books;
     }
 
@@ -38,27 +50,27 @@ public class Loan {
         this.member = member;
     }
 
-    public Date getLoanDate() {
+    public LocalDate getLoanDate() {
         return loanDate;
     }
 
-    public void setLoanDate(Date loanDate) {
+    public void setLoanDate(LocalDate loanDate) {
         this.loanDate = loanDate;
     }
 
-    public Date getReturnDate() {
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(Date returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
 
-    public entities.enums.loanStatus getLoanStatus() {
+    public entities.enums.LoanStatus getLoanStatus() {
         return loanStatus;
     }
 
-    public void setLoanStatus(entities.enums.loanStatus loanStatus) {
+    public void setLoanStatus(entities.enums.LoanStatus loanStatus) {
         this.loanStatus = loanStatus;
     }
 

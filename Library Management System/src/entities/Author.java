@@ -1,27 +1,35 @@
 package entities;
 
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
-
+import java.util.HashSet;
+import java.util.Set;
+@Entity
+@Table (name = "authors")
 public class Author extends Person {
 
-    private Date dateOfBirth;
+    @Column
+    private LocalDate dateOfBirth;
+    @Column
     private String nacionality;
+    @Column
     private String biography;
+    @OneToMany(mappedBy = "author")
+    private Set<Book> book = new HashSet<>();
 
-    public Author(String name, Date dateOfBirth, String nacionality, String biography) {
-        super(name);
+    public Author(String name,Long id, LocalDate dateOfBirth, String nacionality, String biography) {
+        super(name, id);
         this.dateOfBirth = dateOfBirth;
         this.nacionality = nacionality;
         this.biography = biography;
     }
 
-
-
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -50,4 +58,6 @@ public class Author extends Person {
                 ", biography='" + biography + '\'' +
                 '}';
     }
+
+
 }
