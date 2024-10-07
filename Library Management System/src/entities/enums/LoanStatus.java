@@ -1,6 +1,6 @@
 package entities.enums;
 
-public enum loanStatus {
+public enum LoanStatus {
     ACTIVE,
     COMPLETED,
     OVERDUE
