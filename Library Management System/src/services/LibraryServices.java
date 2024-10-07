@@ -44,7 +44,7 @@ public class LibraryServices {
         }
     }
 
-    public void registerAuthor(Author Author) throws EmailAlreadyExistsException {
+    public void registerAuthor(Author Author) throws AuthorAlreadyExistsException{
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -59,11 +59,11 @@ public class LibraryServices {
             if (existingAuthor == null) {
                 em.persist(Author);
             } else {
-                throw new EmailAlreadyExistsException("Author already registered: " + Author.getName());
+                throw new AuthorAlreadyExistsException("Author already registered: " + Author.getName());
             }
 
             em.getTransaction().commit();
-        } catch (EmailAlreadyExistsException e) {
+        } catch (AuthorAlreadyExistsException e) {
             throw e;
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
