@@ -18,6 +18,6 @@ git clone https://github.com/vinnyhbr/SP_SpringBoot_AWS_challenge-_01
 * **MySQL 8.0+**
 * **Intelij 2024/2+**
 
-  in the next future, i'll finish this project with all requirements. But for today, I couldn't finish everything, sorry guys.
+  in the next future, i'll finish this project with all requirements. But for today, i couldn't finish everything, sorry guys.
 
 
